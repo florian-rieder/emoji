@@ -1,8 +1,12 @@
 let currentSearch = '';
+let isConfirmationActive = false;
+let confirmationTimeout;
 let dataset;
 
 const searchbar = document.getElementById('search');
-searchbar.addEventListener('keyup', searchChanged);
+// searchbar.addEventListener('keyup', search);
+
+document.getElementById('submit').addEventListener('click', search)
 
 const currentSearchText = document.getElementById('current-search');
 
@@ -31,8 +35,10 @@ function draw(data) {
         .attr('class', 'tile')
         .style('opacity', 0)
         .on('click', e => {
+            let emoji = e.target.__data__.emoji;
+            // Show confirmation toast
+            setConfirmation(emoji);
             // Copy the emoji to clipboard
-            let emoji = e.target.__data__.emoji
             writeToClipBoard(emoji)
         })
 
@@ -56,7 +62,7 @@ function draw(data) {
         .remove();
 }
 
-function searchChanged() {
+function search() {
     currentSearch = searchbar.value.toLowerCase();
     currentSearchText.innerHTML = currentSearch;
 
@@ -79,4 +85,18 @@ async function writeToClipBoard(text) {
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function setConfirmation(emoji) {
+    const confirmationEmoji = document.getElementById('confirmation-emoji')
+    confirmationEmoji.innerHTML = emoji;
+
+    // If there is a timer active, cancel it (extend its duration basically)
+    if (confirmationTimeout != null) {
+        clearTimeout(confirmationTimeout);
+    }
+
+    const toast = document.getElementById('confirmation-toast');
+    toast.classList.add('active');
+    confirmationTimeout = setTimeout(() => toast.classList.remove('active'), 2000)
 }

@@ -11,12 +11,22 @@
 
 <body>
 
+    <div id="search-container">
+        <div>
+            <input type="text" name="Search" id="search">
+            <button id="submit">Search</button>
+        </div>
+    </div>
+    
     <div>
-        <input type="text" name="Search" id="search">
-        <span>Searching for: <span id="current-search"></span></span>
+        <span>Results for: <span id="current-search"></span></span>
     </div>
 
     <div id="emoji-container"></div>
+
+    <div id="confirmation-toast">
+        <span id="confirmation-emoji"></span> copied to clipboard !
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.4/d3.min.js"
         integrity="sha512-nfUlp2ZWPKWlnAH/OsMeAqRSYBxOdPYeBXwceyw6QqqZ7uTT/s5/eS1hMKphjVBouk0jf/JQ8ULVJRnEqSHkXA=="
