@@ -21,7 +21,6 @@ d3.csv('assets/data/emoji_list.csv').then(data => {
 });
 
 function draw(data) {
-    console.log('draw');
     let containers = d3.select('#emoji-container')
         .selectAll('div')
         .data(data, d => d.index)
@@ -30,6 +29,11 @@ function draw(data) {
         .append('div')
         .attr('class', 'tile')
         .style('opacity', 0)
+        .on('click', e => {
+            // Copy the emoji to clipboard
+            let emoji = e.target.__data__.emoji
+            writeToClipBoard(emoji)
+        })
 
     // Add image of the icon
     enteringContainers.append('img')
@@ -62,4 +66,12 @@ function isEmojiSelected(d) {
     if (currentSearch == '') return true;
 
     return d.keywords.some(k => k.includes(currentSearch)) || d.description.toLowerCase().includes(currentSearch)
+}
+
+async function writeToClipBoard(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (error) {
+        console.error(error.message);
+    }
 }
