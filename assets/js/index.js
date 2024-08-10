@@ -37,8 +37,6 @@ function draw(data) {
         .style('opacity', 0)
         .on('click', e => {
             let emoji = e.target.__data__.emoji;
-            // Show confirmation toast
-            setConfirmation(emoji);
             // Copy the emoji to clipboard
             writeToClipBoard(emoji)
         })
@@ -89,6 +87,7 @@ function isEmojiSelected(d) {
 async function writeToClipBoard(text) {
     try {
         await navigator.clipboard.writeText(text);
+        setConfirmation(text)
     } catch (error) {
         console.error(error.message);
     }
