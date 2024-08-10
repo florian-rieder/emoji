@@ -1,3 +1,50 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 .hidden{
     display: none;
+}
+
+#emoji-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 6em;
+    margin-right: 6em;
+    cursor: pointer;
+}
+
+.tile {
+    margin: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition-duration: 200ms;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1em;
+    text-align: center;
+}
+
+.tile img {
+    padding: 2em;
+}
+
+@media screen and (min-width: 64em) {
+    .tile {
+        width: calc(20% - 1rem);
+    }
+}
+
+@media screen and (max-width: 64em) {
+    .tile {
+        width: calc(33.333% - 1rem);
+    }
+}
+
+@media screen and (max-width: 48em) {
+    .tile {
+        width: calc(100% - 1rem);
+    }
 }

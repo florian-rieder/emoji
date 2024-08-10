@@ -9,6 +9,7 @@ const currentSearchText = document.getElementById('current-search');
 d3.csv('assets/data/emoji_list.csv').then(data => {
     data.forEach((d, i) => {
         // Split the keywords and add an index to identify rows
+        d.description = capitalizeFirstLetter(d.description);
         d.keywords = d.keywords.split('|').map(k => k.toLowerCase());
         d.index = i;
     })
@@ -74,4 +75,8 @@ async function writeToClipBoard(text) {
     } catch (error) {
         console.error(error.message);
     }
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
