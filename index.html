@@ -11,18 +11,26 @@
 
 <body>
 
-    <div id="search-container">
-        <div>
+    <div id="main">
+        <header>
+            <nav>
+                <h1>Simple emoji copy paste</h1>
+            </nav>
+        </header>
+
+        <div id="search-container">
+
             <input type="text" name="Search" id="search">
             <button id="submit">Search</button>
-        </div>
-    </div>
-    
-    <div>
-        <span>Results for: <span id="current-search"></span></span>
-    </div>
 
-    <div id="emoji-container"></div>
+        </div>
+
+        <div id="query-info" class="hidden">
+            <span>Showing results for: <span id="current-search"></span></span>
+        </div>
+
+        <div id="emoji-container"></div>
+    </div>
 
     <div id="confirmation-toast">
         <span id="confirmation-emoji"></span> copied to clipboard !

@@ -6,4 +6,4 @@
 - Search engine ✅
 - Copy to clipboard ✅
 - Notification that the emoji was copied to clipboard ✅
-- Style
+- Style ✅

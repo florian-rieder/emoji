@@ -4,7 +4,7 @@ let confirmationTimeout;
 let dataset;
 
 const searchbar = document.getElementById('search');
-// searchbar.addEventListener('keyup', search);
+searchbar.addEventListener('keypress', inputKeyPress);
 
 document.getElementById('submit').addEventListener('click', search)
 
@@ -46,11 +46,6 @@ function draw(data) {
     enteringContainers.append('img')
         .attr('src', d => `data:image/png;base64,${d.base64}`)
 
-    // Add description
-    enteringContainers.append('span')
-        .attr('class', 'description')
-        .html(d => d.description)
-
     enteringContainers.transition()
         .duration(200)
         .style('opacity', 1)
@@ -66,8 +61,23 @@ function search() {
     currentSearch = searchbar.value.toLowerCase();
     currentSearchText.innerHTML = currentSearch;
 
+    const info = document.getElementById('query-info');
+    if (currentSearch == '') {
+        info.classList.add('hidden');
+    } else {
+        info.classList.remove('hidden');
+    }
+
     draw(dataset.filter(d => isEmojiSelected(d)));
 }
+
+function inputKeyPress(event) {
+    // Enter
+    if (event.keyCode == 13) {
+        search();
+    }
+}
+
 
 function isEmojiSelected(d) {
     if (currentSearch == '') return true;
