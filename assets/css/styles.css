@@ -105,7 +105,7 @@ nav h1 {
 }
 
 .tile:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0px 9px 6px -5px rgba(0, 0, 0, 0.5);
 
 }
@@ -114,48 +114,83 @@ nav h1 {
     max-width: 100px;
 } */
 
-@media screen and (min-width: 64em) {
-    .tile {
-        width: calc(12.5% - 1rem);
-    }
-}
-
-@media screen and (max-width: 64em) {
-    .tile {
-        width: calc(20% - 1rem);
-    }
-}
-
-@media screen and (max-width: 48em) {
-    .tile {
-        width: calc(50% - 1rem);
-    }
-}
-
-@media screen and (max-width: 34em) {
-    .tile {
-        width: calc(100% - 1rem);
-    }
-
-    #main {
-        margin-left: 1em;
-        margin-right: 1em;
-    }
-
-}
-
 #confirmation-toast {
     border-radius: 4px;
-    padding: 0.5em;
+    padding: 0.75em;
     background-color: rgb(65, 209, 65);
     color: white;
     position: fixed;
     bottom: 1em;
     right: 1em;
-    transform: translateY(50px) rotateX(90deg);
-    transition: transform 0.3s ease-in-out;
+    transform: translateY(50px) rotateY(-90deg);
+    transition: all 0.2s ease-in-out;
+    font-size: 1.5em;
+    opacity: 0;
 }
 
 #confirmation-toast.active {
     transform: translateY(0px);
+    opacity: 1;
+}
+
+
+
+
+/* MEDIA QUERIES */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .tile {
+        width: calc(25% - 1rem);
+    }
+
+    #main {
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .tile {
+        width: calc(20% - 1rem);
+    }
+
+    #main {
+        margin-left: 4em;
+        margin-right: 4em;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .tile {
+        width: calc(12.5% - 1rem);
+    }
+
+    #main {
+        margin-left: 6em;
+        margin-right: 6em;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .tile {
+        width: calc(10% - 1rem);
+    }
+
+    #main {
+        margin-left: 10em;
+        margin-right: 10em;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    #main {
+        margin-left: 12em;
+        margin-right: 12em;
+    }
 }

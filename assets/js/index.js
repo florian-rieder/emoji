@@ -33,6 +33,7 @@ function draw(data) {
     let enteringContainers = containers.enter()
         .append('div')
         .attr('class', 'tile')
+        .attr('title', d => d.description)
         .style('opacity', 0)
         .on('click', e => {
             let emoji = e.target.__data__.emoji;
