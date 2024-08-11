@@ -208,19 +208,28 @@ nav h1 {
         margin-left: 0.25em;
         margin-right: 0.25em;
     }
+
+    #search {
+        margin-right: 0.25em;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .tile {
-        width: calc(20% - 1rem);
+        width: calc(16.66% - 1rem);
     }
 
     #main {
         margin-left: 4em;
         margin-right: 4em;
     }
+
+    #search {
+        margin-right: 0.5em;
+    }
 }
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
