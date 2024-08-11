@@ -22,6 +22,8 @@ d3.csv('assets/data/emoji_list.csv').then(data => {
 
     console.log(dataset);
 
+    document.getElementById('spinner-container').classList.add('hidden');
+
     draw(dataset);
 });
 

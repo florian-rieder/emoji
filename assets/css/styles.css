@@ -1,5 +1,8 @@
 :root {
     --text-gray: rgb(93, 93, 93);
+    --primary: rgb(44, 120, 214);
+    --primary-border: rgb(45, 91, 148);
+    --primary-hover: rgb(68, 136, 219);
 }
 
 body {
@@ -7,7 +10,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 header {
@@ -61,12 +64,12 @@ nav h1 {
     margin: 0;
     vertical-align: middle;
     border-radius: 25px;
-    border: 1px solid rgb(45, 91, 148);
+    border: 1px solid var(--primary-border);
     font-size: 1.25em;
     padding: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
-    background-color: rgb(44, 120, 214);
+    background-color: var(--primary);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -75,7 +78,7 @@ nav h1 {
 }
 
 #submit:hover {
-    background-color: rgb(68, 136, 219);
+    background-color: var(--primary-hover);
 }
 
 #query-info {
@@ -131,6 +134,63 @@ nav h1 {
 #confirmation-toast.active {
     transform: translateY(0px);
     opacity: 1;
+}
+
+/* SPINNER */
+#spinner-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15em;
+}
+
+/* 
+    from: https://cssloaders.github.io/
+    awesome site btw !!
+*/
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+}
+
+.loader::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid var(--primary);
+    animation: prixClipFix 2s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes prixClipFix {
+    0% {
+        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+    }
+
+    25% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+    }
+
+    50% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+    }
+
+    75% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+    }
+
+    100% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+    }
 }
 
 
